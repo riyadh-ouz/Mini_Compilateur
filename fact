@@ -1,0 +1,16 @@
+main:
+	n: entier;
+	tmp: entier;
+	fact: entier;
+debut
+	afficher("Entrez n: ");
+	lire(n);
+	tmp = n;
+	fact = 1;
+	tantque(tmp > 0):
+		fact = fact * tmp;
+		tmp = tmp - 1;
+	ftq;
+	afficher("Factorielle: ");
+	afficher(fact);
+fin

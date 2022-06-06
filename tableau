@@ -1,0 +1,55 @@
+main:
+	T: entier[5];
+	i: entier;
+	j: entier;
+	imin: entier;
+	tmp: entier;
+	x: entier;
+	trouve: entier;
+	m: entier;
+debut
+	// Remplissage du tableau
+	afficher("Entrez les éléments du tableau un a un ");
+	i = 0;
+	tantque (i < 5): lire(T[i]); i = i + 1; ftq;
+
+	// Tri par selection
+	i = 0;
+	tantque (i < 4):
+		imin = i;
+		j = i + 1;
+		tantque (j < 5):
+			si (T[j] < T[imin]):
+				imin = j;
+			fsi;
+			j = j + 1;
+		ftq;
+
+		tmp = T[i];
+		T[i] = T[imin];
+		T[imin] = tmp;
+		i = i + 1;
+	ftq;
+	
+	// Affichage
+	i = 0;
+	tantque(i < 5): afficher(T[i]); i = i + 1; ftq;
+
+	// Recherche dichotomique
+	i = 0;
+	j = 4;
+	trouve = 0;
+	lire(x);
+	tantque(i <= j et trouve != 1):
+		m = (i + j) / 2;
+		si (T[m] == x): trouve = 1; fsi;
+		sinon:
+			si (x < T[m]): j = m - 1; fsi;
+			sinon: i = m + 1; fsinon;
+		fsinon;
+	ftq;
+
+	si (trouve == 1): afficher("L'indice de l'élément recherché est:"); afficher(m + 1); fsi;
+	sinon: afficher("L'élément recherché n'éxiste pas"); fsinon;
+
+fin
